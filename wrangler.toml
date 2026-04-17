@@ -1,0 +1,29 @@
+name = "vandfort-dedup"
+compatibility_date = "2024-05-01"
+
+[[workers]]
+name = "oauth-proxy"
+main = ".cloudflare/workers/oauth-proxy.ts"
+route = "oauth-proxy.vandfort.workers.dev/*"
+
+  [workers.vars]
+  ALLOWED_ORIGIN = "https://vandfort-dedup.pages.dev,https://dedup.vandfort.com"
+
+  # Set secrets via: wrangler secret put HUBSPOT_CLIENT_SECRET --name oauth-proxy
+  # wrangler secret put HUBSPOT_CLIENT_ID --name oauth-proxy
+
+[[workers]]
+name = "claude-proxy"
+main = ".cloudflare/workers/claude-proxy.ts"
+route = "claude-proxy.vandfort.workers.dev/*"
+
+  [workers.vars]
+  ALLOWED_ORIGIN = "https://vandfort-dedup.pages.dev,https://dedup.vandfort.com"
+
+  # Set secret via: wrangler secret put ANTHROPIC_API_KEY --name claude-proxy
+
+[[d1_databases]]
+binding = "BENCHMARK_DB"
+database_name = "vandfort-benchmarks"
+database_id = "REPLACE_WITH_D1_ID_AFTER_CREATE"
+# Create with: wrangler d1 create vandfort-benchmarks
