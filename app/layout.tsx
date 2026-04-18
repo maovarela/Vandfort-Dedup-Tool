@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Vandfort Dedup",
   description:
-    "Client-side CRM deduplication for HubSpot and Salesforce. Zero server storage.",
+    "Encuentra y elimina duplicados en HubSpot o Salesforce. Todo ocurre dentro de tu navegador — nada se guarda en servidores de Vandfort.",
   robots: { index: false, follow: false },
 };
 
@@ -43,7 +43,7 @@ export default function RootLayout({
                   href="/dashboard"
                   className="transition-colors hover:text-vf-text"
                 >
-                  Dashboard
+                  Escaneos
                 </Link>
               </li>
               <li>
@@ -51,7 +51,7 @@ export default function RootLayout({
                   href="/scan"
                   className="transition-colors hover:text-vf-text"
                 >
-                  New Scan
+                  Nuevo escaneo
                 </Link>
               </li>
               <li>
@@ -59,7 +59,7 @@ export default function RootLayout({
                   href="/audit"
                   className="transition-colors hover:text-vf-text"
                 >
-                  Audit
+                  Auditoría
                 </Link>
               </li>
             </ul>
@@ -67,9 +67,20 @@ export default function RootLayout({
         </header>
         <main className="mx-auto max-w-6xl px-6 py-12">{children}</main>
         <footer className="border-t border-vf-border">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-xs text-vf-text-3">
-            <span>All data stays in your browser.</span>
-            <span className="font-mono">v0.1.0</span>
+          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-6 py-6 text-xs text-vf-text-3 md:flex-row md:items-center">
+            <span className="flex items-center gap-2">
+              <span aria-hidden>🔒</span>
+              Tus datos están en tu navegador, no en los nuestros.
+            </span>
+            <span className="flex items-center gap-4 font-mono">
+              <button
+                type="button"
+                className="transition-colors hover:text-vf-text-2"
+              >
+                Borrar datos locales
+              </button>
+              <span>v0.1.0</span>
+            </span>
           </div>
         </footer>
       </body>
